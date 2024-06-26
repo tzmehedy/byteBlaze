@@ -1,6 +1,6 @@
 
 
-const Bookmark = () => {
+const Bookmarks = () => {
     return (
         <div>
             <h1>This is Bookmark page</h1> 
@@ -8,4 +8,4 @@ const Bookmark = () => {
     );
 };
 
-export default Bookmark;
+export default Bookmarks;
