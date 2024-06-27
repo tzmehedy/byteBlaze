@@ -6,31 +6,34 @@ import Root from './Layouts/Root.jsx'
 import Home from './Pages/Home.jsx'
 import Blogs from './Pages/Blogs.jsx'
 import Bookmarks from './Pages/Bookmarks.jsx'
+import Blog from './Pages/Blog.jsx'
 
 const router = createBrowserRouter([
-
   {
-    path:'/',
+    path: "/",
     element: <Root></Root>,
-    children:[
-
+    children: [
       {
-        path:'/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'/blogs',
-        element: <Blogs></Blogs>
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+        loader: () => fetch("https://dev.to/api/articles?per_page=20&top=1"),
       },
       {
-        path:'/bookmarks',
-        element: <Bookmarks></Bookmarks>
-      }
-    ]
-  }
-
-
-])
+        path: "/blog/:id",
+        element: <Blog></Blog>,
+        loader: ({params}) => fetch(`https://dev.to/api/articles/${params.id}`),
+      },
+      {
+        path: "/bookmarks",
+        element: <Bookmarks></Bookmarks>,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
