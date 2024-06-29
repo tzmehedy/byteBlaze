@@ -7,6 +7,8 @@ import Home from './Pages/Home.jsx'
 import Blogs from './Pages/Blogs.jsx'
 import Bookmarks from './Pages/Bookmarks.jsx'
 import Blog from './Pages/Blog.jsx'
+import Content from './Components/Content.jsx'
+import Author from './Components/Author.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,22 @@ const router = createBrowserRouter([
       {
         path: "/blog/:id",
         element: <Blog></Blog>,
-        loader: ({params}) => fetch(`https://dev.to/api/articles/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://dev.to/api/articles/${params.id}`),
+        children: [
+          {
+            index: true,
+            element: <Content></Content>,
+            loader: ({ params }) =>
+              fetch(`https://dev.to/api/articles/${params.id}`),
+          },
+          {
+            path: "author",
+            element: <Author></Author>,
+            loader: ({ params }) =>
+              fetch(`https://dev.to/api/articles/${params.id}`),
+          },
+        ],
       },
       {
         path: "/bookmarks",

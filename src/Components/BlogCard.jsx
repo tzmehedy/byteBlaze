@@ -8,7 +8,7 @@ const BlogCard = ({ blog }) => {
   const {id, title, cover_image, description, published_at } = blog;
 
   return (
-    <div className="translate hover:scale-[105%] border border-primary p-2 rounded-lg">
+    <div className="translate hover:scale-[105%] border border-secondary p-2 rounded-lg">
       <Link
         rel="noopener noreferrer"
         to={`/blog/${id}`}
