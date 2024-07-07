@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { MdBookmarkAdd } from "react-icons/md";
+import { saveBlogs } from "../Utilities/localStorage";
 
 const Blog = () => {
     const blog = useLoaderData();
     const [buttonActive,setButtonActive] = useState(0)
+
+    const handleBookmaark =(blog)=>{
+      saveBlogs(blog)
+    }
 
     return (
       <div>
@@ -57,7 +63,7 @@ const Blog = () => {
               <span>Content</span>
             </Link>
             <Link
-              to={'author'}
+              to={"author"}
               onClick={() => setButtonActive(1)}
               className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${
                 buttonActive === 1 ? "border border-b-0" : "border-b"
@@ -78,9 +84,12 @@ const Blog = () => {
               </svg>
               <span>Author</span>
             </Link>
+
+            <button onClick={()=>handleBookmaark(blog)} className="p-4 bg-secondary secondary opacity-80 hover:opacity-40 rounded-full">
+              <MdBookmarkAdd className="size-8 text-primary"></MdBookmarkAdd>
+            </button>
           </div>
           <Outlet></Outlet>
-          
         </div>
       </div>
     );

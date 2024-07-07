@@ -9,7 +9,7 @@ import Bookmarks from './Pages/Bookmarks.jsx'
 import Blog from './Pages/Blog.jsx'
 import Content from './Components/Content.jsx'
 import Author from './Components/Author.jsx'
-// import { SyncLoader } from 'react-spinners'
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -56,5 +56,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router}></RouterProvider>
+    <Toaster></Toaster>
   </React.StrictMode>
 );
