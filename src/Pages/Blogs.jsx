@@ -1,12 +1,19 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import BlogCard from "../Components/BlogCard";
+
+import notFoundImage from "../assets/404 (1).jpg"
+import Loader from "../Components/Loader";
 
 
 const Blogs = () => {
 
     const blogs = useLoaderData()
 
-    console.log(blogs[1])
+    const navigation = useNavigation()
+
+    if(navigation.state === 'loading'){
+      return <Loader></Loader>
+    }
     
     return (
       <div>
@@ -18,9 +25,7 @@ const Blogs = () => {
               className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 "
             >
               <img
-                src={
-                  blogs[0].cover_image
-                }
+                src={blogs[0].cover_image || notFoundImage}
                 alt=""
                 className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 "
               />

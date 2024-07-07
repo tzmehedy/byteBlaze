@@ -9,6 +9,7 @@ import Bookmarks from './Pages/Bookmarks.jsx'
 import Blog from './Pages/Blog.jsx'
 import Content from './Components/Content.jsx'
 import Author from './Components/Author.jsx'
+// import { SyncLoader } from 'react-spinners'
 
 const router = createBrowserRouter([
   {
@@ -52,8 +53,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router}></RouterProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
